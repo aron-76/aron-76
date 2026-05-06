@@ -32,7 +32,7 @@ async function fetchCalendar() {
     headers: {
       authorization: `Bearer ${token}`,
       'content-type': 'application/json',
-      'user-agent': 'basehalf-profile-pulse',
+      'user-agent': 'basehalf-profile-build-log',
     },
     body: JSON.stringify({ query, variables: { login: username } }),
   });
@@ -104,7 +104,7 @@ function renderSvg(calendar) {
   const max = Math.max(1, ...days.map((day) => day.contributionCount));
   const total = calendar.totalContributions ?? days.reduce((sum, day) => sum + day.contributionCount, 0);
   const activeDays = days.filter((day) => day.contributionCount > 0).length;
-  const latestActive = [...days].reverse().find((day) => day.contributionCount > 0)?.date || 'no recent signal';
+  const latestActive = [...days].reverse().find((day) => day.contributionCount > 0)?.date || 'no recent activity';
   const cells = days
     .map((day, index) => {
       const week = Math.floor(index / 7);
@@ -125,12 +125,12 @@ function renderSvg(calendar) {
     .join('\n    ');
 
   const fallbackNote = calendar.fallback
-    ? 'Fallback signal shown. Add PROFILE_STATS_TOKEN for live GitHub data.'
-    : `Latest active signal: ${latestActive}`;
+    ? 'Live data unavailable. Add PROFILE_STATS_TOKEN to include private contribution data.'
+    : `Latest activity: ${latestActive}`;
 
   return `<svg width="1200" height="310" viewBox="0 0 1200 310" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Contribution Pulse</title>
-  <desc id="desc">A Basehalf-style contribution pulse generated from GitHub contribution data.</desc>
+  <title id="title">Build Log</title>
+  <desc id="desc">A quiet GitHub contribution log generated from contribution data.</desc>
   <style>
     .bg { fill: #070d19; }
     .panel { fill: rgba(15, 23, 42, .88); stroke: rgba(148, 163, 184, .2); stroke-width: 1; }
@@ -166,8 +166,8 @@ function renderSvg(calendar) {
   <rect x="18" y="18" width="1164" height="274" rx="22" fill="url(#glow)"/>
   <rect class="panel" x="34" y="34" width="1132" height="242" rx="18"/>
 
-  <text class="title" x="58" y="70">Contribution Pulse</text>
-  <text class="label" x="58" y="98">private-safe activity intensity, rendered as Basehalf signal nodes</text>
+  <text class="title" x="58" y="70">Build Log</text>
+  <text class="label" x="58" y="98">GitHub activity over the last year</text>
 
   <text class="metric" x="954" y="70" text-anchor="end">${total.toLocaleString('en-US')}</text>
   <text class="label" x="966" y="70">contributions</text>

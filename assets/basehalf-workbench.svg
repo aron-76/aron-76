@@ -1,0 +1,248 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Basehalf workbench</title>
+  <desc id="desc">A calm product workbench showing maps, points, blocks, and references.</desc>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    .bg {
+      fill: #0d1117;
+    }
+
+    .paper {
+      fill: #111820;
+      stroke: #2a343f;
+      stroke-width: 1;
+    }
+
+    .panel {
+      fill: #161d26;
+      stroke: #303b48;
+      stroke-width: 1;
+    }
+
+    .muted-panel {
+      fill: #131a22;
+      stroke: #27313d;
+      stroke-width: 1;
+    }
+
+    .line {
+      stroke: #303b48;
+      stroke-width: 1;
+    }
+
+    .soft-line {
+      stroke: #516170;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-dasharray: 4 8;
+    }
+
+    .accent-line {
+      stroke: #7dd3fc;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .title {
+      fill: #f0f6fc;
+      font: 760 44px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      fill: #b5c2d0;
+      font: 500 17px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .caption {
+      fill: #7d8b9c;
+      font: 650 12px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .label {
+      fill: #d9e4f2;
+      font: 700 15px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .small {
+      fill: #94a3b8;
+      font: 520 12px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .chip-text {
+      fill: #b6c3d2;
+      font: 650 11px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .note {
+      fill: #cbd5e1;
+      font: 640 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .folder {
+      fill: #182331;
+      stroke: #384759;
+      stroke-width: 1;
+    }
+
+    .folder-tab {
+      fill: #243247;
+      stroke: #384759;
+      stroke-width: 1;
+    }
+
+    .point {
+      fill: #142027;
+      stroke: #2dd4bf;
+      stroke-opacity: .62;
+      stroke-width: 1.2;
+    }
+
+    .point-blue {
+      fill: #152033;
+      stroke: #60a5fa;
+      stroke-opacity: .66;
+    }
+
+    .point-amber {
+      fill: #241e14;
+      stroke: #fbbf24;
+      stroke-opacity: .58;
+    }
+
+    .chip {
+      fill: #202a36;
+      stroke: #3a4654;
+      stroke-width: 1;
+    }
+
+    .dot {
+      fill: #7dd3fc;
+    }
+
+    .dot-green {
+      fill: #34d399;
+    }
+
+    .dot-amber {
+      fill: #fbbf24;
+    }
+
+    .shadow {
+      filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .22));
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1200" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0d1117"/>
+      <stop offset=".55" stop-color="#101923"/>
+      <stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#7dd3fc" stop-opacity=".7"/>
+      <stop offset=".45" stop-color="#34d399" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity=".55"/>
+    </linearGradient>
+  </defs>
+
+  <rect class="bg" width="1200" height="360" rx="28"/>
+  <rect width="1200" height="360" rx="28" fill="url(#surface)"/>
+  <path d="M52 72H1148M52 132H1148M52 192H1148M52 252H1148M52 312H1148" class="line" opacity=".35"/>
+  <path d="M162 44V316M322 44V316M482 44V316M642 44V316M802 44V316M962 44V316" class="line" opacity=".28"/>
+
+  <g transform="translate(74 60)">
+    <text class="caption" x="0" y="0">BASEHALF</text>
+    <text class="title" x="0" y="48">Context workbench</text>
+    <text class="subtitle" x="0" y="82">Maps, notes, files, and references in one place.</text>
+    <rect x="0" y="112" width="360" height="4" rx="2" fill="url(#rule)"/>
+
+    <g transform="translate(0 148)">
+      <rect class="chip" x="0" y="0" width="86" height="30" rx="15"/>
+      <circle class="dot" cx="18" cy="15" r="4"/>
+      <text class="chip-text" x="32" y="19">maps</text>
+
+      <rect class="chip" x="102" y="0" width="86" height="30" rx="15"/>
+      <circle class="dot-green" cx="120" cy="15" r="4"/>
+      <text class="chip-text" x="134" y="19">points</text>
+
+      <rect class="chip" x="204" y="0" width="88" height="30" rx="15"/>
+      <circle class="dot-amber" cx="222" cy="15" r="4"/>
+      <text class="chip-text" x="236" y="19">blocks</text>
+
+      <rect class="chip" x="308" y="0" width="118" height="30" rx="15"/>
+      <circle class="dot" cx="326" cy="15" r="4"/>
+      <text class="chip-text" x="340" y="19">references</text>
+    </g>
+  </g>
+
+  <g class="shadow" transform="translate(532 52)">
+    <rect class="paper" x="0" y="0" width="588" height="256" rx="22"/>
+
+    <g transform="translate(24 24)">
+      <text class="caption" x="0" y="0">MAP</text>
+      <rect class="muted-panel" x="0" y="18" width="146" height="190" rx="16"/>
+
+      <g transform="translate(18 46)">
+        <path class="folder-tab" d="M0 4C0 1.8 1.8 0 4 0H44C49 0 49 10 56 10H108C110.2 10 112 11.8 112 14V88C112 90.2 110.2 92 108 92H4C1.8 92 0 90.2 0 88V4Z"/>
+        <path class="folder" d="M0 18H112V92H0V18Z"/>
+        <text class="small" x="16" y="42">Research</text>
+        <text class="small" x="16" y="65">Design notes</text>
+      </g>
+
+      <rect class="chip" x="18" y="154" width="110" height="28" rx="14"/>
+      <text class="chip-text" x="38" y="173">Product map</text>
+    </g>
+
+    <g transform="translate(202 24)">
+      <text class="caption" x="0" y="0">CANVAS</text>
+      <rect class="muted-panel" x="0" y="18" width="186" height="190" rx="16"/>
+      <path class="soft-line" d="M88 84L46 52"/>
+      <path class="soft-line" d="M88 84L142 50"/>
+      <path class="soft-line" d="M88 84L54 132"/>
+      <path class="soft-line" d="M88 84L140 136"/>
+
+      <rect class="point point-blue" x="54" y="60" width="68" height="48" rx="12"/>
+      <text class="label" x="76" y="89">Map</text>
+
+      <rect class="point" x="18" y="28" width="64" height="42" rx="11"/>
+      <text class="small" x="35" y="54">Point</text>
+
+      <rect class="point point-amber" x="122" y="26" width="46" height="42" rx="11"/>
+      <text class="small" x="135" y="52">File</text>
+
+      <rect class="point" x="18" y="124" width="74" height="42" rx="11"/>
+      <text class="small" x="36" y="150">Spec</text>
+
+      <rect class="point point-blue" x="116" y="124" width="54" height="42" rx="11"/>
+      <text class="small" x="128" y="150">Note</text>
+    </g>
+
+    <g transform="translate(420 24)">
+      <text class="caption" x="0" y="0">POINT</text>
+      <rect class="panel" x="0" y="18" width="138" height="190" rx="16"/>
+      <text class="label" x="18" y="52">Launch notes</text>
+      <rect x="18" y="70" width="96" height="8" rx="4" fill="#2b3644"/>
+      <rect x="18" y="90" width="72" height="8" rx="4" fill="#2b3644"/>
+      <rect x="18" y="110" width="108" height="8" rx="4" fill="#2b3644"/>
+
+      <rect class="chip" x="18" y="138" width="100" height="28" rx="14"/>
+      <text class="chip-text" x="34" y="157">2 references</text>
+
+      <path class="accent-line" d="M18 180H104"/>
+      <circle class="dot-green" cx="116" cy="180" r="5"/>
+    </g>
+
+    <path class="soft-line" d="M170 120H200"/>
+    <path class="soft-line" d="M390 120H420"/>
+  </g>
+
+  <g transform="translate(74 304)">
+    <text class="note" x="0" y="0">A place to arrange the work before asking software to help with it.</text>
+  </g>
+</svg>
