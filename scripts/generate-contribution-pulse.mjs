@@ -110,13 +110,11 @@ function renderSvg(calendar) {
       const week = Math.floor(index / 7);
       const weekday = day.weekday ?? index % 7;
       const intensity = day.contributionCount / max;
-      const radius = day.contributionCount === 0 ? 1.7 : 2.2 + intensity * 3.2;
-      const opacity = day.contributionCount === 0 ? 0.2 : 0.42 + intensity * 0.58;
-      const hue = day.contributionCount === 0 ? '#26354f' : intensity > 0.72 ? '#5eead4' : intensity > 0.38 ? '#22d3ee' : '#2563eb';
+      const opacity = day.contributionCount === 0 ? 0.34 : 0.56 + intensity * 0.44;
+      const hue = day.contributionCount === 0 ? '#1f2937' : intensity > 0.72 ? '#34d399' : intensity > 0.38 ? '#22c55e' : '#2563eb';
       const x = 54 + week * 14.4;
-      const y = 118 + weekday * 18;
-      const recentClass = index > days.length - 38 && day.contributionCount > 0 ? ' recent' : '';
-      return `<circle class="dot${recentClass}" cx="${x.toFixed(1)}" cy="${y}" r="${radius.toFixed(2)}" fill="${hue}" opacity="${opacity.toFixed(2)}"><title>${escapeXml(day.date)}: ${day.contributionCount} contributions</title></circle>`;
+      const y = 118 + weekday * 16;
+      return `<rect class="cell" x="${x.toFixed(1)}" y="${y}" width="10" height="10" rx="3" fill="${hue}" opacity="${opacity.toFixed(2)}"><title>${escapeXml(day.date)}: ${day.contributionCount} contributions</title></rect>`;
     })
     .join('\n    ');
 
@@ -139,12 +137,8 @@ function renderSvg(calendar) {
     .metric { fill: #dff8ff; font: 800 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     .month { fill: #64748b; font: 600 10px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .05em; }
     .rule { stroke: rgba(148, 163, 184, .11); stroke-width: 1; }
-    .dot { filter: drop-shadow(0 0 8px rgba(34, 211, 238, .12)); }
-    .recent { animation: pulse 3.4s ease-in-out infinite; transform-origin: center; }
-    .flow { stroke: url(#flow); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 70 360; animation: flow 9s linear infinite; opacity: .72; }
-    @keyframes pulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
-    @keyframes flow { to { stroke-dashoffset: -430; } }
-    @media (prefers-reduced-motion: reduce) { .recent, .flow { animation: none; } }
+    .cell { shape-rendering: geometricPrecision; }
+    .baseline { stroke: url(#flow); stroke-width: 1.4; stroke-linecap: round; opacity: .72; }
   </style>
   <defs>
     <linearGradient id="shell" x1="0" y1="0" x2="1200" y2="310" gradientUnits="userSpaceOnUse">
@@ -182,7 +176,7 @@ function renderSvg(calendar) {
     ${cells}
   </g>
 
-  <path class="flow" d="M58 252C190 224 306 282 430 252C546 224 666 286 788 252C910 220 1002 258 1128 238"/>
+  <path class="baseline" d="M58 252C190 224 306 282 430 252C546 224 666 286 788 252C910 220 1002 258 1128 238"/>
   <text class="label" x="58" y="272">${escapeXml(fallbackNote)}</text>
 </svg>
 `;
