@@ -72,7 +72,7 @@ flowchart LR
 ### GitHub Motion
 
 <p align="center">
-  <img height="164" alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=aron-76&show_icons=true&theme=transparent&hide_border=true&rank_icon=github&include_all_commits=true">
+  <img height="164" alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=aron-76&show_icons=true&theme=transparent&hide_border=true&rank_icon=github&include_all_commits=true&count_private=true">
   <img height="164" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=aron-76&layout=compact&theme=transparent&hide_border=true&langs_count=8">
 </p>
 
