@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - ".github/workflows/profile-assets.yml"
+      - "scripts/generate-contribution-pulse.mjs"
 
 permissions:
   contents: write
@@ -18,16 +19,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  contribution-snake:
+  contribution-pulse:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate contribution snake
-        uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: aron-76
-          outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Generate contribution pulse
+        run: node scripts/generate-contribution-pulse.mjs
+        env:
+          GITHUB_USERNAME: aron-76
+          GITHUB_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN || github.token }}
+          OUTPUT_PATH: dist/contribution-pulse.svg
 
       - name: Publish generated assets
         run: |
@@ -38,6 +41,6 @@ jobs:
           git checkout -b output
           git add .
           git commit -m "Generate profile assets"
-          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" output
+          git push -f "https://x-access-token:${PUBLISH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" output
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_TOKEN: ${{ github.token }}
