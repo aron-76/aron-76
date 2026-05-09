@@ -22,6 +22,7 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
 - Making dense Maps stay calm and readable.
 - Making Points feel fast to enter, write in, and return to.
 - Letting AI write into durable Blocks, not disposable chat turns.
+- Shaping Agent Team so multiple AI agents can work on the same Map with traceable context.
 - Keeping Map and Point as product language, not database terms.
 - Tightening references, collaboration, and persistence around real product workflows.
 
