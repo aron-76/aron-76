@@ -40,9 +40,9 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
   <img alt="Prisma" src="https://img.shields.io/badge/Prisma-232320?style=flat&amp;logo=prisma&amp;logoColor=EDECEA">
   <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-232320?style=flat&amp;logo=postgresql&amp;logoColor=9FA8C5">
   <img alt="Redis" src="https://img.shields.io/badge/Redis-232320?style=flat&amp;logo=redis&amp;logoColor=D8D6CF">
-  <img alt="AWS Bedrock" src="https://img.shields.io/badge/AWS%20Bedrock-232320?style=flat&amp;logo=amazonaws&amp;logoColor=D8D6CF">
-  <img alt="Vertex AI" src="https://img.shields.io/badge/Vertex%20AI-232320?style=flat&amp;logo=googlecloud&amp;logoColor=9FA8C5">
   <img alt="MCP" src="https://img.shields.io/badge/MCP-232320?style=flat">
+  <img alt="AI Agents" src="https://img.shields.io/badge/AI%20Agents-232320?style=flat">
+  <img alt="Tool Calling" src="https://img.shields.io/badge/Tool%20Calling-232320?style=flat">
   <img alt="Docker" src="https://img.shields.io/badge/Docker-232320?style=flat&amp;logo=docker&amp;logoColor=9FA8C5">
 </p>
 
