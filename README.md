@@ -51,11 +51,3 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
 <p align="center">
   <img alt="GitHub contribution build log" src="https://raw.githubusercontent.com/aron-76/aron-76/output/contribution-pulse.svg">
 </p>
-
----
-
-<p align="center">
-  <a href="https://github.com/aron-76">GitHub</a>
-  /
-  <a href="mailto:chouarslan@gmail.com">Email</a>
-</p>
