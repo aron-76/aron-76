@@ -19,12 +19,8 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
 
 ### Current Focus
 
-- Making dense Maps stay calm and readable.
-- Making Points feel fast to enter, write in, and return to.
-- Letting AI write into durable Blocks, not disposable chat turns.
 - Building Agent Team: Map references become an organization layer that turns direction into deliverables.
-- Keeping Map and Point as product language, not database terms.
-- Tightening references, collaboration, and persistence around real product workflows.
+- Refining the Basehalf experience so Maps, Points, Blocks, and AI work feel simple to use.
 
 ### Tech Stack
 
