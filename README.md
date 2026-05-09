@@ -19,7 +19,7 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
 
 ### Current Focus
 
-- Building Agent Team: Map references become an organization layer that turns direction into deliverables.
+- Building Agent Team as an organization structure for AI, using Map references to amplify direction into deliverables.
 - Refining the Basehalf experience so Maps, Points, Blocks, and AI work feel simple to use.
 
 ### Tech Stack
