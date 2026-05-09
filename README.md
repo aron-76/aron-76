@@ -17,11 +17,12 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
 - **Block**: editable material written by you or AI.
 - **Reference**: a context link between Points.
 
-### On My Desk
+### Current Focus
 
 - Making dense Maps stay calm and readable.
 - Making Points feel fast to enter, write in, and return to.
 - Letting AI write into durable Blocks, not disposable chat turns.
+- Keeping Map and Point as product language, not database terms.
 - Tightening references, collaboration, and persistence with TypeScript, React, BlockNote, Yjs, Prisma, and PostgreSQL.
 
 ### Build Log
@@ -29,13 +30,6 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
 <p align="center">
   <img alt="GitHub contribution build log" src="https://raw.githubusercontent.com/aron-76/aron-76/output/contribution-pulse.svg">
 </p>
-
-### Working Principles
-
-- Make thinking visible before making it automatic.
-- Keep AI output editable and accountable.
-- Treat Map and Point as product language, not database terms.
-- Build tools that help people resume where they left off.
 
 ---
 
