@@ -23,7 +23,15 @@ A **Map** is the visual field. A **Point** is one focused place on that field. I
 - Making Points feel fast to enter, write in, and return to.
 - Letting AI write into durable Blocks, not disposable chat turns.
 - Keeping Map and Point as product language, not database terms.
-- Tightening references, collaboration, and persistence with TypeScript, React, BlockNote, Yjs, Prisma, and PostgreSQL.
+- Tightening references, collaboration, and persistence around real product workflows.
+
+### Tech Stack
+
+- **App**: TypeScript, Next.js, React, Mantine, Tailwind CSS.
+- **Canvas and documents**: BlockNote, Yjs, Hocuspocus, IndexedDB, custom map rendering.
+- **Backend**: NestJS services, Prisma, PostgreSQL, Redis.
+- **AI layer**: AWS Bedrock, Google Vertex AI, MCP, Zod tool contracts.
+- **Workflow**: pnpm, Turborepo, Jest, Docker Compose.
 
 ### Build Log
 
