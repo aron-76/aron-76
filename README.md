@@ -1,5 +1,9 @@
 <p align="center">
-  <img alt="Basehalf workbench" src="./assets/basehalf-workbench.svg">
+  <img width="76" alt="Basehalf logo" src="./assets/basehalf-logo.png">
+</p>
+
+<p align="center">
+  <img alt="Basehalf workspace interface" src="./assets/basehalf-workbench.svg">
 </p>
 
 ### Hi, I am Aron

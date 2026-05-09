@@ -111,7 +111,7 @@ function renderSvg(calendar) {
       const weekday = day.weekday ?? index % 7;
       const intensity = day.contributionCount / max;
       const opacity = day.contributionCount === 0 ? 0.34 : 0.56 + intensity * 0.44;
-      const hue = day.contributionCount === 0 ? '#1f2937' : intensity > 0.72 ? '#34d399' : intensity > 0.38 ? '#22c55e' : '#2563eb';
+      const hue = day.contributionCount === 0 ? '#2a2a27' : intensity > 0.72 ? '#d0cfcc' : intensity > 0.38 ? '#9fa8c5' : '#787773';
       const x = 54 + week * 14.4;
       const y = 118 + weekday * 16;
       return `<rect class="cell" x="${x.toFixed(1)}" y="${y}" width="10" height="10" rx="3" fill="${hue}" opacity="${opacity.toFixed(2)}"><title>${escapeXml(day.date)}: ${day.contributionCount} contributions</title></rect>`;
@@ -127,41 +127,41 @@ function renderSvg(calendar) {
     : `Latest activity: ${latestActive}`;
 
   return `<svg width="1200" height="310" viewBox="0 0 1200 310" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Build Log</title>
+  <title id="title">GitHub contribution log</title>
   <desc id="desc">A quiet GitHub contribution log generated from contribution data.</desc>
   <style>
-    .bg { fill: #070d19; }
-    .panel { fill: rgba(15, 23, 42, .88); stroke: rgba(148, 163, 184, .2); stroke-width: 1; }
-    .title { fill: #f8fafc; font: 800 28px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .label { fill: #94a3b8; font: 500 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .metric { fill: #dff8ff; font: 800 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .month { fill: #64748b; font: 600 10px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .05em; }
-    .rule { stroke: rgba(148, 163, 184, .11); stroke-width: 1; }
+    .bg { fill: #1a1a17; }
+    .panel { fill: #232320; stroke: rgba(255, 255, 255, .08); stroke-width: 1; }
+    .title { fill: #edecea; font: 680 28px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .label { fill: #b3b2af; font: 500 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .metric { fill: #edecea; font: 680 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .month { fill: #787773; font: 600 10px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .04em; }
+    .rule { stroke: rgba(255, 255, 255, .07); stroke-width: 1; }
     .cell { shape-rendering: geometricPrecision; }
     .baseline { stroke: url(#flow); stroke-width: 1.4; stroke-linecap: round; opacity: .72; }
   </style>
   <defs>
     <linearGradient id="shell" x1="0" y1="0" x2="1200" y2="310" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#071020"/>
-      <stop offset=".55" stop-color="#0f172a"/>
-      <stop offset="1" stop-color="#06151b"/>
+      <stop stop-color="#1a1a17"/>
+      <stop offset=".55" stop-color="#222220"/>
+      <stop offset="1" stop-color="#1a1a17"/>
     </linearGradient>
     <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(840 140) rotate(90) scale(170 520)">
-      <stop stop-color="#14b8a6" stop-opacity=".28"/>
-      <stop offset="1" stop-color="#14b8a6" stop-opacity="0"/>
+      <stop stop-color="#9fa8c5" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#9fa8c5" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="flow" x1="48" y1="246" x2="1088" y2="246" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2563eb"/>
-      <stop offset=".5" stop-color="#22d3ee"/>
-      <stop offset="1" stop-color="#5eead4"/>
+      <stop stop-color="#787773"/>
+      <stop offset=".5" stop-color="#9fa8c5"/>
+      <stop offset="1" stop-color="#d0cfcc"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="310" rx="28" fill="url(#shell)"/>
   <rect x="18" y="18" width="1164" height="274" rx="22" fill="url(#glow)"/>
   <rect class="panel" x="34" y="34" width="1132" height="242" rx="18"/>
 
-  <text class="title" x="58" y="70">Build Log</text>
-  <text class="label" x="58" y="98">GitHub activity over the last year</text>
+  <text class="title" x="58" y="70">Last 12 months</text>
+  <text class="label" x="58" y="98">GitHub activity rendered as a quiet calendar</text>
 
   <text class="metric" x="954" y="70" text-anchor="end">${total.toLocaleString('en-US')}</text>
   <text class="label" x="966" y="70">contributions</text>
