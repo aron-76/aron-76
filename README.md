@@ -1,32 +1,28 @@
 <p align="center">
-  <img width="76" alt="Basehalf logo" src="./assets/basehalf-logo.png">
+  <img alt="Basehalf visual thinking interface" src="./assets/basehalf-profile-hero-clean.png">
 </p>
 
-<p align="center">
-  <img alt="Basehalf workspace interface" src="./assets/basehalf-workbench.svg">
-</p>
+### Hi, I am Jerry
 
-### Hi, I am Aron
+I am building **Basehalf**, a visual thinking interface for the AI era.
 
-I am building **Basehalf**, a workspace for turning scattered project context into something you can arrange, edit, and return to.
+Instead of leaving useful AI work trapped in chat, Basehalf gives each project a Map: a surface where ideas, files, decisions, and questions can be arranged as Points. Open a Point and it becomes a durable page, where you and AI can write, revise, and keep the context connected.
 
-The product starts from a simple problem I keep running into: good work leaves traces everywhere. Notes, files, decisions, drafts, and half-formed ideas all need a place to become useful again.
+### How It Works
 
-### Core Objects
+A **Map** is the visual field. A **Point** is one focused place on that field. Inside a Point, editable **Blocks** become the record of work. **References** connect related Points so AI can follow the shape of the project instead of only the last message.
 
-The workspace is built around a few plain objects:
-
-- **Maps** are rooms for a project, topic, or angle of thinking.
-- **Points** are small workspaces for notes, files, blocks, and decisions.
-- **Blocks** are editable pieces of work that can outlive the session that produced them.
-- **References** are explicit links that say what belongs together.
+- **Map**: where a line of thinking becomes visible.
+- **Point**: one idea, file, question, task, or decision you can open and keep building.
+- **Block**: editable material written by you or AI.
+- **Reference**: a context link between Points.
 
 ### On My Desk
 
-- Making the map canvas feel calm when a project gets dense.
-- Turning point documents into a reliable place for specs, notes, and working memory.
-- Tightening collaboration and persistence with TypeScript, React, BlockNote, Yjs, Prisma, and PostgreSQL.
-- Designing details that make the next useful action obvious.
+- Making dense Maps stay calm and readable.
+- Making Points feel fast to enter, write in, and return to.
+- Letting AI write into durable Blocks, not disposable chat turns.
+- Tightening references, collaboration, and persistence with TypeScript, React, BlockNote, Yjs, Prisma, and PostgreSQL.
 
 ### Build Log
 
@@ -36,10 +32,10 @@ The workspace is built around a few plain objects:
 
 ### Working Principles
 
-- Show the structure before automating it.
-- Prefer editable objects over throwaway chat.
-- Keep design intent close to implementation details.
-- Build tools that make work easier to resume.
+- Make thinking visible before making it automatic.
+- Keep AI output editable and accountable.
+- Treat Map and Point as product language, not database terms.
+- Build tools that help people resume where they left off.
 
 ---
 
