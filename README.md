@@ -12,9 +12,9 @@ I am building **Basehalf**, a workspace for turning scattered project context in
 
 The product starts from a simple problem I keep running into: good work leaves traces everywhere. Notes, files, decisions, drafts, and half-formed ideas all need a place to become useful again.
 
-### Basehalf
+### Core Objects
 
-Basehalf is built around a few plain objects:
+The workspace is built around a few plain objects:
 
 - **Maps** are rooms for a project, topic, or angle of thinking.
 - **Points** are small workspaces for notes, files, blocks, and decisions.
