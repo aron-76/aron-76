@@ -84,7 +84,7 @@ function escapeXml(value) {
     .replaceAll('"', '&quot;');
 }
 
-function monthLabels(days) {
+function monthLabels(days, startX, weekGap) {
   const labels = [];
   let lastMonth = null;
   days.forEach((day, index) => {
@@ -92,7 +92,8 @@ function monthLabels(days) {
     const month = date.getUTCMonth();
     if (month !== lastMonth) {
       lastMonth = month;
-      const x = 54 + index * 2.7;
+      const week = Math.floor(index / 7);
+      const x = startX + week * weekGap;
       labels.push({ x, label: date.toLocaleString('en', { month: 'short', timeZone: 'UTC' }) });
     }
   });
@@ -105,79 +106,89 @@ function renderSvg(calendar) {
   const total = calendar.totalContributions ?? days.reduce((sum, day) => sum + day.contributionCount, 0);
   const activeDays = days.filter((day) => day.contributionCount > 0).length;
   const latestActive = [...days].reverse().find((day) => day.contributionCount > 0)?.date || 'no recent activity';
+  const chart = {
+    x: 44,
+    y: 112,
+    monthY: 92,
+    cell: 10,
+    weekGap: 16.1,
+    dayGap: 15,
+  };
+  const chartEnd = chart.x + 52 * chart.weekGap + chart.cell;
   const cells = days
     .map((day, index) => {
       const week = Math.floor(index / 7);
       const weekday = day.weekday ?? index % 7;
       const intensity = day.contributionCount / max;
       const opacity = day.contributionCount === 0 ? 0.34 : 0.56 + intensity * 0.44;
-      const hue = day.contributionCount === 0 ? '#2a2a27' : intensity > 0.72 ? '#d0cfcc' : intensity > 0.38 ? '#9fa8c5' : '#787773';
-      const x = 54 + week * 14.4;
-      const y = 118 + weekday * 16;
-      return `<rect class="cell" x="${x.toFixed(1)}" y="${y}" width="10" height="10" rx="3" fill="${hue}" opacity="${opacity.toFixed(2)}"><title>${escapeXml(day.date)}: ${day.contributionCount} contributions</title></rect>`;
+      const level = day.contributionCount === 0 ? 'empty' : intensity > 0.72 ? 'high' : intensity > 0.38 ? 'mid' : 'low';
+      const x = chart.x + week * chart.weekGap;
+      const y = chart.y + weekday * chart.dayGap;
+      return `<rect class="cell ${level}" x="${x.toFixed(1)}" y="${y}" width="${chart.cell}" height="${chart.cell}" rx="3" opacity="${opacity.toFixed(2)}"><title>${escapeXml(day.date)}: ${day.contributionCount} contributions</title></rect>`;
     })
     .join('\n    ');
 
-  const months = monthLabels(days)
-    .map((month) => `<text class="month" x="${month.x.toFixed(1)}" y="95">${month.label}</text>`)
+  const months = monthLabels(days, chart.x, chart.weekGap)
+    .map((month) => `<text class="month" x="${month.x.toFixed(1)}" y="${chart.monthY}">${month.label}</text>`)
     .join('\n    ');
 
   const fallbackNote = calendar.fallback
     ? 'Live data unavailable. Add PROFILE_STATS_TOKEN to include private contribution data.'
     : `Latest activity: ${latestActive}`;
 
-  return `<svg width="1200" height="310" viewBox="0 0 1200 310" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  return `<svg width="1200" height="260" viewBox="0 0 1200 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">GitHub contribution log</title>
   <desc id="desc">A quiet GitHub contribution log generated from contribution data.</desc>
   <style>
-    .bg { fill: #1a1a17; }
-    .panel { fill: #232320; stroke: rgba(255, 255, 255, .08); stroke-width: 1; }
-    .title { fill: #edecea; font: 680 28px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .label { fill: #b3b2af; font: 500 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .metric { fill: #edecea; font: 680 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .month { fill: #787773; font: 600 10px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .04em; }
-    .rule { stroke: rgba(255, 255, 255, .07); stroke-width: 1; }
+    .title { fill: #edecea; font: 720 28px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .label { fill: #a9a8a2; font: 540 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .metric { fill: #edecea; font: 720 30px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .metric-label { fill: #8b8a84; font: 650 11px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .month { fill: #77766f; font: 650 11px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .08em; }
+    .rule { stroke: rgba(237, 236, 234, .08); stroke-width: 1; }
     .cell { shape-rendering: geometricPrecision; }
-    .baseline { stroke: url(#flow); stroke-width: 1.4; stroke-linecap: round; opacity: .72; }
+    .empty { fill: #292a26; }
+    .low { fill: #787773; }
+    .mid { fill: #9fa8c5; }
+    .high { fill: #d0cfcc; }
+    .baseline { stroke: url(#flow); stroke-width: 1.5; stroke-linecap: round; opacity: .76; }
+    @media (prefers-color-scheme: light) {
+      .title, .metric { fill: #24292f; }
+      .label { fill: #57606a; }
+      .metric-label, .month { fill: #6e7781; }
+      .rule { stroke: rgba(36, 41, 47, .08); }
+      .empty { fill: #d8dee4; }
+      .low { fill: #8c959f; }
+      .mid { fill: #6e80b6; }
+      .high { fill: #24292f; }
+    }
   </style>
   <defs>
-    <linearGradient id="shell" x1="0" y1="0" x2="1200" y2="310" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1a1a17"/>
-      <stop offset=".55" stop-color="#222220"/>
-      <stop offset="1" stop-color="#1a1a17"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(840 140) rotate(90) scale(170 520)">
-      <stop stop-color="#9fa8c5" stop-opacity=".16"/>
-      <stop offset="1" stop-color="#9fa8c5" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="flow" x1="48" y1="246" x2="1088" y2="246" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#787773"/>
+    <linearGradient id="flow" x1="44" y1="225" x2="1148" y2="225" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#787773" stop-opacity=".72"/>
       <stop offset=".5" stop-color="#9fa8c5"/>
-      <stop offset="1" stop-color="#d0cfcc"/>
+      <stop offset="1" stop-color="#d0cfcc" stop-opacity=".9"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="310" rx="28" fill="url(#shell)"/>
-  <rect x="18" y="18" width="1164" height="274" rx="22" fill="url(#glow)"/>
-  <rect class="panel" x="34" y="34" width="1132" height="242" rx="18"/>
 
-  <text class="title" x="58" y="70">Last 12 months</text>
-  <text class="label" x="58" y="98">GitHub activity rendered as a quiet calendar</text>
+  <text class="title" x="44" y="38">Last 12 months</text>
+  <text class="label" x="44" y="64">GitHub activity rendered as a build log</text>
 
-  <text class="metric" x="954" y="70" text-anchor="end">${total.toLocaleString('en-US')}</text>
-  <text class="label" x="966" y="70">contributions</text>
-  <text class="metric" x="954" y="102" text-anchor="end">${activeDays.toLocaleString('en-US')}</text>
-  <text class="label" x="966" y="102">active days</text>
+  <text class="metric-label" x="910" y="30">contributions</text>
+  <text class="metric" x="910" y="62">${total.toLocaleString('en-US')}</text>
+  <text class="metric-label" x="1070" y="30">active days</text>
+  <text class="metric" x="1070" y="62">${activeDays.toLocaleString('en-US')}</text>
 
   <g>
     ${months}
-    <path class="rule" d="M50 118H818"/>
-    <path class="rule" d="M50 172H818"/>
-    <path class="rule" d="M50 226H818"/>
+    <path class="rule" d="M${chart.x} ${chart.y}H${chartEnd.toFixed(1)}"/>
+    <path class="rule" d="M${chart.x} ${chart.y + chart.dayGap * 3}H${chartEnd.toFixed(1)}"/>
+    <path class="rule" d="M${chart.x} ${chart.y + chart.dayGap * 6}H${chartEnd.toFixed(1)}"/>
     ${cells}
   </g>
 
-  <path class="baseline" d="M58 252C190 224 306 282 430 252C546 224 666 286 788 252C910 220 1002 258 1128 238"/>
-  <text class="label" x="58" y="272">${escapeXml(fallbackNote)}</text>
+  <path class="baseline" d="M44 226C176 204 310 244 444 224C574 204 706 246 834 224C956 202 1040 230 1156 212"/>
+  <text class="label" x="44" y="246">${escapeXml(fallbackNote)}</text>
 </svg>
 `;
 }
