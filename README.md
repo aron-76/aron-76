@@ -4,7 +4,7 @@
 
 ### Hi, I am Jerry
 
-I am building **Basehalf**, a visual thinking interface for the AI era.
+I am building **BaseHalf**, a visual thinking interface for the AI era.
 
 Instead of leaving useful AI work trapped in chat, Basehalf gives each project a Map: a surface where ideas, files, decisions, and questions can be arranged as Points. Open a Point and it becomes a durable page, where you and AI can write, revise, and keep the context connected.
 
