@@ -1,47 +1,22 @@
 <p align="center">
-  <img alt="Basehalf visual thinking interface" src="./assets/basehalf-profile-hero-clean.png">
+  <a href="https://github.com/Pointa-Labs/basehalf">
+    <img alt="The BaseHalf desktop app: a folder open as a canvas, with notes connected into a shot list, a video, a still, and a video draft with its prompt" src="./assets/basehalf-desktop.png">
+  </a>
 </p>
 
 ### Hi, I am Jerry
 
-I am building **BaseHalf**, a visual thinking interface for the AI era.
+I am building **[BaseHalf](https://github.com/Pointa-Labs/basehalf)**, an open-source desktop workspace where a folder opens as a canvas.
 
-Instead of leaving useful AI work trapped in chat, Basehalf gives each project a Map: a surface where ideas, files, decisions, and questions can be arranged as Points. Open a Point and it becomes a durable page, where you and AI can write, revise, and keep the context connected.
+Notes, images, videos, and PDFs stay ordinary files in that folder. On the canvas they are cards you can arrange and connect, and the connections are saved in the files. Claude Code, Codex, and other agents work in the same folder and read the same connections. There is no BaseHalf account and no cloud database: the folder is the project.
 
 ### How It Works
 
-A **Map** is the visual field. A **Point** is one focused place on that field. Inside a Point, editable **Blocks** become the record of work. **References** connect related Points so AI can follow the shape of the project instead of only the last message.
-
-- **Map**: where a line of thinking becomes visible.
-- **Point**: one idea, file, question, task, or decision you can open and keep building.
-- **Block**: editable material written by you or AI.
-- **Reference**: a context link between Points.
-
-### Current Focus
-
-- Building Agent Team as an organization structure for AI, using Point references to amplify direction into deliverables.
-- Refining the Basehalf experience so Maps, Points, Blocks, and AI work feel simple to use.
-
-### Tech Stack
-
-<p align="center">
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-232320?style=flat&amp;logo=typescript&amp;logoColor=9FA8C5">
-  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-232320?style=flat&amp;logo=nextdotjs&amp;logoColor=EDECEA">
-  <img alt="React" src="https://img.shields.io/badge/React-232320?style=flat&amp;logo=react&amp;logoColor=9FA8C5">
-  <img alt="Rust" src="https://img.shields.io/badge/Rust-232320?style=flat&amp;logo=rust&amp;logoColor=EDECEA">
-  <img alt="Tauri" src="https://img.shields.io/badge/Tauri-232320?style=flat&amp;logo=tauri&amp;logoColor=9FA8C5">
-  <img alt="BlockNote" src="https://img.shields.io/badge/BlockNote-232320?style=flat">
-  <img alt="Yjs" src="https://img.shields.io/badge/Yjs-232320?style=flat">
-  <img alt="Hocuspocus" src="https://img.shields.io/badge/Hocuspocus-232320?style=flat">
-  <img alt="NestJS" src="https://img.shields.io/badge/NestJS-232320?style=flat&amp;logo=nestjs&amp;logoColor=D8D6CF">
-  <img alt="Prisma" src="https://img.shields.io/badge/Prisma-232320?style=flat&amp;logo=prisma&amp;logoColor=EDECEA">
-  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-232320?style=flat&amp;logo=postgresql&amp;logoColor=9FA8C5">
-  <img alt="Redis" src="https://img.shields.io/badge/Redis-232320?style=flat&amp;logo=redis&amp;logoColor=D8D6CF">
-  <img alt="MCP" src="https://img.shields.io/badge/MCP-232320?style=flat">
-  <img alt="AI Agents" src="https://img.shields.io/badge/AI%20Agents-232320?style=flat">
-  <img alt="Tool Calling" src="https://img.shields.io/badge/Tool%20Calling-232320?style=flat">
-  <img alt="Docker" src="https://img.shields.io/badge/Docker-232320?style=flat&amp;logo=docker&amp;logoColor=9FA8C5">
-</p>
+- **Canvas**: a folder in BaseHalf. Each file in it is a card, and each subfolder opens its own canvas.
+- **Card**: one file, such as a note, an image, a video, or a PDF. Notes are edited right on their cards.
+- **Connection**: `A → B` means A's context flows into B. It is saved in B: a note lists what flows into it in its `upstream` frontmatter, so an agent that reads the note sees it too.
+- **Agent Area**: Claude Code, Codex, or a terminal next to the canvas, in the same folder. A `basehalf` skill tells them where descriptions and connections are, and what you selected.
+- **Image and video cards**: generated with your own API keys, from providers such as ByteDance, Kling, Google, Runway, and OpenAI. The cards connected to one are its inputs, and the file it makes becomes the card.
 
 ### Build Log
 
