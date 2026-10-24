@@ -94,6 +94,10 @@ function monthLabels(days, startX, weekGap) {
       lastMonth = month;
       const week = Math.floor(index / 7);
       const x = startX + week * weekGap;
+      // The partial month at the start has no room for its label: the next month takes its place.
+      if (labels.length && x - labels.at(-1).x < 3 * weekGap) {
+        labels.pop();
+      }
       labels.push({ x, label: date.toLocaleString('en', { month: 'short', timeZone: 'UTC' }) });
     }
   });
